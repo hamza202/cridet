@@ -392,8 +392,18 @@ input:focus{
 .text-center{
     text-align: center;
 }
+form{
+    display:flex; width: 100%; justify-content: center; flex-direction: column
+}
 @media screen and (max-width: 992px){
     .card-box{
         display: none;
     }
+}
+.button.auth-btn{
+    max-width: 343px;
+}
+.auth-container input{
+    max-width: 366px;
+    margin-bottom: 20px;
 }
