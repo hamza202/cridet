@@ -8,6 +8,16 @@ window.onload = function () {
     const ccicon = document.getElementById('ccicon');
     const ccsingle = document.getElementById('ccsingle');
     const generatecard = document.getElementById('generatecard');
+    const nameField = document.getElementById('name');
+    const isValidName = nameField.checkValidity();
+    const submit = document.getElementById('submit');
+    const submit_btn = document.getElementById('submit_btn');
+    // on form submit
+    document.getElementById('form').addEventListener('submit', function (e) {
+        submit_btn.classList.add('loading');
+        // change submit valur to loading
+        submit.value = 'Loading...';
+    });
 
 
     let cctype = null;
@@ -96,8 +106,8 @@ window.onload = function () {
     var expirationdate_mask = new IMask(expirationdate, {
         mask: 'MM{/}YY',
         groups: {
-            YY: new IMask.MaskedPattern.Group.Range([0, 99]),
-            MM: new IMask.MaskedPattern.Group.Range([1, 12]),
+            YY: new IMask.MaskedPattern.Group.Range([0, 9999]),
+            MM: new IMask.MaskedPattern.Group.Range([0, 99]),
         }
     });
 
@@ -142,7 +152,6 @@ window.onload = function () {
 
 //pop in the appropriate card icon when detected
     cardnumber_mask.on("accept", function () {
-        console.log(cardnumber_mask.masked.currentMask.cardtype);
         switch (cardnumber_mask.masked.currentMask.cardtype) {
             case 'american express':
                 ccicon.innerHTML = amex;
@@ -195,7 +204,6 @@ window.onload = function () {
     });
 
 
-
 //Generate random card number from list of known test numbers
     const randomCard = function () {
         let testCards = [
@@ -211,9 +219,9 @@ window.onload = function () {
         let randomNumber = Math.floor(Math.random() * testCards.length);
         cardnumber_mask.unmaskedValue = testCards[randomNumber];
     }
-    generatecard.addEventListener('click', function () {
-        randomCard();
-    });
+    // generatecard.addEventListener('click', function () {
+    //     randomCard();
+    // });
 
 
 // CREDIT CARD IMAGE JS

